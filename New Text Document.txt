@@ -1,0 +1,57 @@
+MySQL Shell 8.0.21
+
+Copyright (c) 2016, 2020, Oracle and/or its affiliates. All rights reserved.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > create table USER(user_id int primary key,first_name varchar(20),last_name varchar(20),adhar_no varchar(12),gender char,age int,mobile_no varchar(10),email varchar(30),city varchar(30),state varchar(30),pincode varchar(7),password varchar(50),security_ques varchar(50),security_ans varchar(50));
+SyntaxError: Unexpected identifier
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect root@localhost:3306
+Creating a session to 'root@localhost:3306'
+Fetching schema names for autocompletion... Press ^C to stop.
+Your MySQL connection id is 26
+Server version: 8.0.21 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > create database test;
+ERROR: 1007 (HY000): Can't create database 'test'; database exists
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| coffee_store       |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| test               |
+| world              |
++--------------------+
+8 rows in set (0.0102 sec)
+ MySQL  localhost:3306 ssl  SQL > use test;
+Default schema set to `test`.
+Fetching table and column names from `test` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  test  SQL > show tables;
++----------------+
+| Tables_in_test |
++----------------+
+| addresses      |
+| people         |
+| pets           |
++----------------+
+3 rows in set (0.0104 sec)
+ MySQL  localhost:3306 ssl  test  SQL > create table USER(user_id int primary key,first_name varchar(20),last_name varchar(20),adhar_no varchar(12),gender char,age int,mobile_no varchar(10),email varchar(30),city varchar(30),state varchar(30),pincode varchar(7),password varchar(30));
+Query OK, 0 rows affected (0.0964 sec)
+ MySQL  localhost:3306 ssl  test  SQL > insert into
+                                     -> USER(user_id,first_name,last_name,aadhar_no,gender,age,mobile_no,email,city,st ate,pincode,_password,security_ques,security_ans) values(1701,'vijay','sharma','309887340843','M',34,'9887786655','vijay1@gmail.co m','vijayawada','andhrapradesh','520001','12345@#','favouritecolour','red'),(1702,'r ohith','kumar','456709871234','M',45,'9809666555','rohith1kumar@gmail.com','gu ntur','andhrapradesh','522004','12@#345','favouritebike','bmw'),(1703,'manasvi','sre e','765843210987','F',20,'9995550666','manasvi57@gmail.com','guntur','andhra pradesh','522004','0987hii','favourite flower','rose');
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ate,pincode,_password,security_ques,security_ans) values(1701,'vijay','sharma','' at line 2
+ MySQL  localhost:3306 ssl  test  SQL > insert into  USER(user_id,first_name,last_name,aadhar_no,gender,age,mobile_no,email,city,state,pincode,password,security_ques,security_ans) values(1701,'mohit','bhati','309887340843','M',24,'9887786655','mohit@gmail.com','jodhpur','rajasthan','302017','12345@#');
+ERROR: 1054 (42S22): Unknown column 'aadhar_no' in 'field list'
+ MySQL  localhost:3306 ssl  test  SQL > insert into  USER(user_id,first_name,last_name,aadhar_no,gender,age,mobile_no,email,city,state,pincode,password) values(1701,'mohit','bhati','309887340843','M',24,'9887786655','mohit@gmail.com','jodhpur','rajasthan','302017','12345@#');
+ERROR: 1054 (42S22): Unknown column 'aadhar_no' in 'field list'
+ MySQL  localhost:3306 ssl  test  SQL > insert into  USER(user_id,first_name,last_name,adhar_no,gender,age,mobile_no,email,city,state,pincode,password) values(1701,'mohit','bhati','309887340843','M',24,'9887786655','mohit@gmail.com','jodhpur','rajasthan','302017','12345@#');
+Query OK, 1 row affected (0.0050 sec)
+ MySQL  localhost:3306 ssl  test  SQL >
